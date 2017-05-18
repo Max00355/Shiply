@@ -3,14 +3,16 @@ import urllib.request as urllib
 from coffer.utils import getRootDir
 import tarfile
 from coffer.utils import text
+import six
+from six.moves.urllib.request import urlopen
 
 def setup():
     root = getRootDir.getCofferDir()
     envs = getRootDir.getEnvsDir()
     os.mkdir(root)
     os.mkdir(envs)
-    print (text.downloadingFiles)
-    deboot = urllib.urlopen("http://ftp.debian.org/debian/pool/main/d/debootstrap/debootstrap_1.0.81~bpo8+1.tar.gz").read()
+    six.print_((text.downloadingFiles))
+    deboot = urlopen("http://ftp.debian.org/debian/pool/main/d/debootstrap/debootstrap_1.0.81~bpo8+1.tar.gz")
     path = root + "deboot.tar"
     with open(path, 'wb') as tarf:
         tarf.write(deboot)

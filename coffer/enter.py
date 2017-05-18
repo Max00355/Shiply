@@ -1,10 +1,11 @@
 import os
 import string
-from coffer.utils import text, getRootDir, isRoot, getFlag, getArg
-from coffer import create
-from coffer import remove
+from .coffer.utils import text, getRootDir, isRoot, getFlag, getArg
+from .coffer import create
+from .coffer import remove
 import sys
 import re
+import six
 
 def enterChroot(path):
     os.chdir(path)
@@ -18,9 +19,9 @@ def mount(directory, path):
     mounted = (path + "/" + directory).replace("//", "/") in mounts
     if not mounted:
         os.system("mount --bind {} {}/{}".format(directory, path, directory))
-        print (text.mounted.format(directory))
+        six.print_((text.mounted.format(directory)))
     else:
-        print (text.alreadyMounted.format(directory))
+        six.print_((text.alreadyMounted.format(directory)))
 
 def checkMount(path):
     toMount = getFlag.getFlags("-m")

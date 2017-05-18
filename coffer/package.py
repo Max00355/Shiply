@@ -1,11 +1,12 @@
-from coffer.utils import getRootDir, text, isRoot, getArg
-from coffer import remove
+from .coffer.utils import getRootDir, text, isRoot, getArg
+from .coffer import remove
 import shutil
 import sys
 import os
+import six
 
 def createArchive(path, name):
-    print (text.creatingPackage)
+    six.print_((text.creatingPackage))
     shutil.make_archive(name, "tar", path)
 
 def compress(path, name):
@@ -25,4 +26,4 @@ def package():
     
     remove.unmountAll(rootDir + env)
     compress(rootDir + env, env)
-    print(text.packaged)
+    six.print_((text.packaged))

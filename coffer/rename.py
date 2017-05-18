@@ -1,5 +1,5 @@
-from coffer.utils import isRoot, text, getRootDir, getArg
-from coffer import remove
+from .coffer.utils import isRoot, text, getRootDir, getArg
+from .coffer import remove
 import os
 import sys
 

@@ -1,11 +1,12 @@
-from coffer.utils import getRootDir, text, ccopy, isRoot, getArg
-from coffer import remove
+from .coffer.utils import getRootDir, text, ccopy, isRoot, getArg
+from .coffer import remove
 import shutil
 import sys
 import os
+import six
 
 def copyEnv(path, to):
-    print(text.cloning)
+    six.print_((text.cloning))
     ccopy.copy(path, to)
     
 def envExists(path):
@@ -29,4 +30,4 @@ def clone():
         sys.exit(text.envAlreadyExistsVar.format(clone))
     remove.unmountAll(path)
     copyEnv(path, clonePath)
-    print(text.cloned)
+    six.print_((text.cloned))

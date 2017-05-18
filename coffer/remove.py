@@ -1,11 +1,12 @@
-from coffer.utils import getRootDir, text, isRoot, getArg
+from .coffer.utils import getRootDir, text, isRoot, getArg
 import os
 import shutil
 import sys
 import re
+import six
 
 def removeDir(path):
-    print (text.removingEnv)
+    six.print_((text.removingEnv))
     shutil.rmtree(path)
 
 def checkIfExists(path):
@@ -20,7 +21,7 @@ def getMounted(path):
 
 def unmountAll(path):
     for m in getMounted(path):
-        print (text.unmounted.format(m))
+        six.print_((text.unmounted.format(m)))
         os.system("umount {}".format(m))
 
 def remove():
@@ -36,4 +37,4 @@ def remove():
         sys.exit(text.envDoesntExist)
     unmountAll(rootDir + name)
     removeDir(rootDir + name)
-    print (text.removed)
+    six.print_((text.removed))
