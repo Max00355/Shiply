@@ -1,10 +1,11 @@
 import os
-from coffer.utils import getRootDir, text
+from .coffer.utils import getRootDir, text
+import six
 
 def ls():
-    print (text.availableEnvironments)
+    six.print_((text.availableEnvironments))
     check = os.listdir(getRootDir.getEnvsDir())
     if len(check) == 0:
-        print (text.noEnvs)
+        six.print_((text.noEnvs))
     else:
-        print ('\n'.join(check) + "\n")
+        six.print_(('\n'.join(check) + "\n"))

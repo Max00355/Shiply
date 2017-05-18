@@ -1,9 +1,10 @@
-from coffer.utils import getRootDir, text, isRoot, getArg
-from coffer import remove
-from coffer import create
+from .coffer.utils import getRootDir, text, isRoot, getArg
+from .coffer import remove
+from .coffer import create
 import tarfile
 import sys
 import os
+import six
 
 def decompressArchive(compressed, path):
     f = tarfile.TarFile(compressed)
@@ -11,7 +12,7 @@ def decompressArchive(compressed, path):
 
 def decompress(compressed, path):
     create.createDir(path)
-    print (text.unpackaging)
+    six.print_((text.unpackaging))
     decompressArchive(compressed, path)
     
 def unpackage():
@@ -31,4 +32,4 @@ def unpackage():
         sys.exit(text.envAlreadyExists)
 
     decompress(compressed, rootDir + env)
-    print (text.unpackagedSuccessful)
+    six.print_((text.unpackagedSuccessful))

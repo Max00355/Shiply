@@ -5,10 +5,12 @@ import re
 import shutil
 from coffer.utils import getRootDir
 from coffer.utils import ccopy
+from six.moves import filter
+import six
 
 def copyProgram(path):
     if not os.path.exists(path):
-        print (text.programDoesNotExist.format(path))
+        six.print_((text.programDoesNotExist.format(path)))
     else:
         deps = os.popen("ldd {}".format(path)).read()
         deps = deps.replace("\t", "").replace("\n", " ")
@@ -25,7 +27,7 @@ def copyProgram(path):
 
 def copyFile(path):
     if not os.path.exists(path):
-        print (text.fileDoesNotExist.format(path))
+        six.print_((text.fileDoesNotExist.format(path)))
     else:
         split = path.split("/")
         split = split[:len(split)-1]
@@ -35,7 +37,7 @@ def copyFile(path):
 
 def copyDir(path):
     if not os.path.exists(path):
-        print (text.folderDoesNotExist.format(path))
+        six.print_((text.folderDoesNotExist.format(path)))
     else:
         split = filter(None, path.split("/"))
         createPath(split[:-1])

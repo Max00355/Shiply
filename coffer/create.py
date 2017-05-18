@@ -1,21 +1,22 @@
 import os
-from coffer.utils import getRootDir, text, getFlag, ccopy, templateUtils, isRoot, content, getArg
+from .coffer.utils import getRootDir, text, getFlag, ccopy, templateUtils, isRoot, content, getArg
 import sys
 import re
 import string
 import imp
 import urllib.request as urllib
 import platform
+import six
 
 def createDir(path):
-    print (text.createDir)
+    six.print_((text.createDir))
     if not os.path.exists(path):
         os.mkdir(path)
         return True
     return False
 
 def copyBaseFiles(path):
-    print (text.copyingFiles)
+    six.print_((text.copyingFiles))
     # Supports 64 bit and 32 bit, no arm yet (though should be an easy fix)
     if platform.architecture()[0] == "64bit":
         arch = "amd64"
@@ -29,7 +30,7 @@ def copyBaseFiles(path):
         version = "xenial"
     if architecture and architecture in content.architectures:
         arch = content.architectures.get(architecture)
-    print (text.usingVersion.format(version))
+    six.print_((text.usingVersion.format(version)))
     debCmd = "bash " + getRootDir.getCofferDir() + "debootstrap/debootstrap --arch=" + arch + " {} {}"
     if repo:
         debCmd += " " + repo
@@ -49,7 +50,7 @@ def executeTemplate(template):
     templateName = template.split("/")[-1]
     templateName = templateName.split(".")[0]
     imp.load_source(templateName, template) # This could break, but I'd rather allow it to break than do a try, except
-    print (text.templateSuccess)
+    six.print_((text.templateSuccess))
 
 def create():
     root = getRootDir.getEnvsDir()
@@ -65,5 +66,5 @@ def create():
     copyBaseFiles(path)
     if template:
         executeTemplate(template)
-    print (text.envCreated)
+    six.print_((text.envCreated))
 

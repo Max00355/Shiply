@@ -1,3 +1,4 @@
-from coffer.utils import text
+from .coffer.utils import text
+import six
 def version():
-    print (text.version)
+    six.print_((text.version))

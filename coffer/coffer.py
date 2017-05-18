@@ -1,11 +1,12 @@
 import sys
-from coffer.utils import text, getRootDir, setupEnv, getArg, commands
+from .coffer.utils import text, getRootDir, setupEnv, getArg, commands
 import os
+import six
 
 def checkArgs():
     rootDir = getRootDir.getCofferDir()
     if not os.path.exists(rootDir):
-        print(text.settingUpEnv)
+        six.print_((text.settingUpEnv))
         setupEnv.setup()
 
     mainCmd = getArg.getCommandName()
