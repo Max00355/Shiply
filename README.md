@@ -31,7 +31,7 @@ it is recommended that Coffer not be used outside of a development setting.
 
 Coffer is a platform for creating isolated filesystem containers. It is intended to be used to create isolated development environments without having to worry about doing any network configuration.
 Applications that are run in Coffer can be accessed outside of a Coffer environment through `localhost` without having to do anything more than `coffer create <name>`. 
-This makes it easy to get environments up and running for those of us who do not need network isolation, and only wish to islolate an app and its dependencies.
+This makes it easy to get environments up and running for those of us who do not need network isolation, and only wish to isolate an app and its dependencies.
 
 Coffer makes it easy to create, enter, and share environments with others.
 
